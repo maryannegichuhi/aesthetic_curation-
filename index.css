@@ -1453,5 +1453,80 @@ footer {
     transform: scale(1.02);
     transition: all 0.3s ease;
 }
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE REFINEMENTS (MEDIA ENGINE)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    
+    /* 1. FORCE LOADING SCREEN CENTERING */
+    .loading-screen {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+    }
+
+    /* Fixes the emoji wreath container track scale on small screens */
+    .floral-spinner {
+        width: 140px !important;  /* Slightly smaller ring for mobile boundaries */
+        height: 140px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Corrects the invisible text-bounding boxes on mobile emojis */
+    .floral-spinner span {
+        font-size: 1.5rem !important; /* Elegant moderate sizing */
+        line-height: 1 !important;    /* Strips out native mobile paragraph padding */
+        position: absolute !important;
+        transform-origin: center center !important; /* Locks anchor points to absolute center */
+    }
+
+    
+    /* 2. LAYOUT PLACEMENT RESET (UNSTACKING BREAKDOWNS) */
+    
+    /* Forces columns to stack vertically instead of crashing side-by-side */
+    .editorial-row, 
+    .editorial-row.row-reverse,
+    .editorial-row.alternate-direction {
+        flex-direction: column !important; /* Stack cleanly */
+        direction: ltr !important;          /* Restores normal layout reading flow */
+        gap: 35px !important;               /* Closer, comfortable mobile spacing */
+        padding: 0 10px !important;
+    }
+
+    /* Gives the text copy and product grids 100% full viewport room */
+    .editorial-column-text, 
+    .editorial-column-visuals {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* 3. PRODUCT IMAGES ROW FIX */
+    /* Prevents the 3-product line from squeezing into tiny invisible needles */
+    .magazine-grid-three {
+        grid-template-columns: repeat(3, 1fr) !important; /* Keeps row presentation */
+        gap: 8px !important; /* Tighter gap to maximize screen space */
+    }
+
+    /* 4-Product grid layout adjustments for mobile screens */
+    .magazine-grid-three:has(figure:nth-child(4)) {
+        grid-template-columns: repeat(2, 1fr) !important; /* Keeps neat 2x2 presentation */
+        max-width: 100% !important;
+    }
+
+    /* Smoothly scales typography sizes down so titles don't wrap awkwardly */
+    .editorial-column-text h2 {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .editorial-hook {
+        font-size: 0.95rem !important;
+        margin-bottom: 16px !important;
+    }
+}
 
 
